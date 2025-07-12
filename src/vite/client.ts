@@ -9,7 +9,7 @@ export type ClientOptions = {
 export const defaultOptions: ClientOptions = {
   jsxImportSource: 'hono/jsx/dom',
   assetsDir: 'static',
-  input: [],
+  input: ['/app/client.ts'],
 }
 
 function client(options?: ClientOptions): Plugin {
@@ -26,7 +26,7 @@ function client(options?: ClientOptions): Plugin {
       return {
         build: {
           rollupOptions: {
-            input: ['/app/client.ts', ...input],
+            input: input,
           },
           assetsDir: options?.assetsDir ?? defaultOptions.assetsDir,
           manifest: true,
